@@ -1,12 +1,13 @@
 .root {
-  background-color: #fcfaf9;
-  color: #333333;
+  background-color: #fbfaf9;
   font-family: 'Montserrat', Arial, Sans-serif;
+  color: #333333;
+  min-height: 100vh;
 }
 
 .content {
   margin: 0 auto;
   min-width: 320px;
   max-width: 2200px;
-  height: 100vh;
+  height: inherit;
 }
