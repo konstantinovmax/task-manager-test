@@ -1,0 +1,16 @@
+.root {
+  background-color: #fbfaf9;
+  font-family: 'Montserrat', Arial, Sans-serif;
+  color: #333333;
+  min-height: 100vh;
+}
+
+.content {
+  margin: 0 auto;
+  min-width: 320px;
+  max-width: 2200px;
+}
+
+.mainContainer {
+  display: flex;
+}

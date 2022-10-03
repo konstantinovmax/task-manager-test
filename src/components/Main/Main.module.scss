@@ -1,0 +1,18 @@
+.root {
+  padding: 50px 40px;
+  width: inherit;
+  height: inherit;
+
+  @media (max-width: 800px) {
+    padding: 20px 16px;
+  }
+}
+
+.title {
+  margin: 0;
+  font-family: 'Montserrat', Arial, Sans-serif;
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.19;
+  color: #333333;
+}

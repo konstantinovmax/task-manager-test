@@ -1,0 +1,112 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: inherit;
+  box-shadow: 0px 0px 25px rgba(236, 236, 236, 0.2);
+  box-sizing: border-box;
+}
+
+.layout {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.dashboard {
+  width: 100%;
+  margin: 0 0 20px 0;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.inputTitle {
+  width: 80%;
+  background: none;
+  border: none;
+  outline: none;
+  font-family: 'Montserrat', Arial, Sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.19;
+  color: #333333;
+  box-sizing: border-box;
+
+  &:focus {
+    border-bottom: 1.5px solid #ececec;
+  }
+
+  &:disabled {
+    color: #333333;
+    -webkit-text-fill-color: #333333;
+  }
+}
+
+.iconsContainer {
+  width: 65px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.pencilIcon,
+.deleteIcon {
+  width: 26px;
+  height: 26px;
+}
+
+.editButton {
+  padding: 0;
+  margin: 0;
+  background: none;
+  overflow: hidden;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.7;
+    transition: ease 0.3s;
+  }
+}
+
+.deleteButton {
+  padding: 0;
+  margin: 0;
+  background: none;
+  overflow: hidden;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.7;
+    transition: ease 0.3s;
+  }
+}
+
+.addButton {
+  padding: 0;
+  margin: 20px 0 0 0;
+  width: 40px;
+  height: 40px;
+  background-color: #86a3e2;
+  border-radius: 5px;
+  overflow: hidden;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.7;
+    transition: ease 0.3s;
+  }
+}
+
+.plustIcon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
