@@ -9,19 +9,17 @@ import plusIcon from '../../res/icons/plus_icon.svg';
 const Column = ({
   column,
   onDeleteColumn,
-  isColumnTitleInputDisabled,
   onDragStart,
   onDragOver,
   onDrop,
   addTaskHandler,
   deleteTaskHandler,
+  isDragging,
 }) => {
   const [tasks, setTasks] = useState(column.tasks);
   const [columnTitle, setColumnTitle] = useState(column.title);
   const [isAddTaskPopupOpen, setIsAddTaskPopupOpen] = useState(false);
-  const [isInputDisabled, setIsInputDisabled] = useState(
-    isColumnTitleInputDisabled
-  );
+  const [isInputDisabled, setIsInputDisabled] = useState(true);
 
   useEffect(() => {
     if (!isInputDisabled) {
@@ -57,6 +55,12 @@ const Column = ({
     }
   };
 
+  const onClickEnter = (e) => {
+    if (e.key === 'Enter') {
+      setIsInputDisabled(true);
+    }
+  };
+
   const onAddTask = (inputValue) => {
     addTaskHandler(inputValue, column);
   };
@@ -70,7 +74,16 @@ const Column = ({
       className={styles.root}
       onDragOver={(e) => onDragOver(e)}
       onDrop={(e) => onDrop(e, column)}
+      onClick={onClickLayout}
     >
+      {!isInputDisabled ? (
+        <div
+          className={styles.layout}
+          onClick={() => setIsInputDisabled(true)}
+        ></div>
+      ) : (
+        <></>
+      )}
       <div className={styles.dashboard}>
         <input
           name="column-title"
@@ -81,14 +94,15 @@ const Column = ({
           onChange={onInputValueChange}
           disabled={isInputDisabled}
           minLength={2}
-          maxLength={20}
+          maxLength={15}
+          onKeyDown={(e) => onClickEnter(e)}
         />
         <div className={styles.iconsContainer}>
           <button className={styles.editButton} onClick={onClickEditButton}>
             <img
               className={styles.pencilIcon}
               src={pencilIcon}
-              alt="Pencil icon"
+              alt="Кнопка редактирования названия колонки"
             />
           </button>
           <button
@@ -98,7 +112,7 @@ const Column = ({
             <img
               className={styles.deleteIcon}
               src={deleteIcon}
-              alt="Delete icon"
+              alt="Кнопка удаления колонки"
             />
           </button>
         </div>
@@ -111,11 +125,16 @@ const Column = ({
           onDeleteTask={onDeleteTask}
           onDragStart={onDragStart}
           onDragOver={onDragOver}
+          isDragging={isDragging}
         />
       ))}
 
       <button className={styles.addButton} onClick={() => onOpenAddTaskPopup()}>
-        <img className={styles.plustIcon} src={plusIcon} alt="Plus icon" />
+        <img
+          className={styles.plustIcon}
+          src={plusIcon}
+          alt="Кнопка вызова окна для добавления новой задачи"
+        />
       </button>
       <Popup
         isOpen={isAddTaskPopupOpen}
@@ -125,6 +144,8 @@ const Column = ({
         title="Укажите название задачи"
         placeholder="Название задачи"
         buttonText="Добавить задачу"
+        minLength={2}
+        maxLength={80}
       />
     </div>
   );

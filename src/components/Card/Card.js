@@ -1,16 +1,34 @@
 import React from 'react';
 import styles from './Card.module.scss';
 import deleteIcon from '../../res/icons/delete_icon.svg';
+import userImage from '../../res/images/user_image.png';
+import classNames from 'classnames';
 
-const Card = ({ column, task, onDeleteTask, onDragStart, onDragOver }) => {
+const Card = ({
+  column,
+  task,
+  onDeleteTask,
+  onDragStart,
+  onDragOver,
+  isDragging,
+}) => {
   return (
     <div
-      className={styles.root}
+      className={classNames(
+        styles.root,
+        isDragging ? styles.dragging : styles.root
+      )}
       draggable
-      onDragStart={(e) => onDragStart(column, task)}
+      onDragStart={() => onDragStart(column, task)}
       onDragOver={(e) => onDragOver(e)}
     >
-      <div className={styles.firstSection}></div>
+      <div className={styles.firstSection}>
+        <img
+          className={styles.userImage}
+          src={userImage}
+          alt="Аватар пользователя"
+        />
+      </div>
       <div className={styles.secondSection}>
         <div className={styles.headContainer}>
           <div className={styles.titleContainer}>
@@ -23,7 +41,7 @@ const Card = ({ column, task, onDeleteTask, onDragStart, onDragOver }) => {
             <img
               className={styles.deleteIcon}
               src={deleteIcon}
-              alt="Delete icon"
+              alt="Кнопка удаления задачи"
             />
           </button>
         </div>

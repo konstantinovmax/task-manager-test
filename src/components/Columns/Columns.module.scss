@@ -1,15 +1,14 @@
 .root {
   margin: 30px 0 0 0;
-  box-sizing: border-box;
 }
 
 .columnsContainer {
   padding: 30px 0 0 0;
   margin: 20px 0 0 0;
   border-top: 2px solid #ececec;
-  display: flex;
-  flex-wrap: nowrap;
-  column-gap: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-column-gap: 40px;
 }
 
 .head {
@@ -38,7 +37,11 @@
   border: none;
   outline: none;
   cursor: pointer;
+  font-family: 'Montserrat', Arial, Sans-serif;
   font-size: 12px;
+  font-weight: 400;
+  line-height: 1.19;
+  color: #333333;
 
   &:hover {
     opacity: 0.7;

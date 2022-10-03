@@ -64,8 +64,11 @@
 
 .title {
   margin: 0;
-  font-weight: 500;
+  font-family: 'Montserrat', Arial, Sans-serif;
   font-size: 16px;
+  font-weight: 500;
+  line-height: 1.19;
+  color: #333333;
   text-align: center;
 
   @media (max-width: 510px) {
@@ -107,7 +110,11 @@
   border: none;
   outline: none;
   cursor: pointer;
+  font-family: 'Montserrat', Arial, Sans-serif;
   font-size: 12px;
+  font-weight: 400;
+  line-height: 1.19;
+  color: #333333;
 
   &:hover {
     opacity: 0.7;

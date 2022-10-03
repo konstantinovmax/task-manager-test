@@ -10,14 +10,14 @@ const Columns = () => {
       id: 1,
       title: 'Backlog',
       tasks: [
-        { id: 1, title: 'Сверстать главный экран' },
-        { id: 2, title: 'Реализовать авторизацию пользователя' },
+        { id: 1, title: 'Реализовать авторизацию пользователя' },
+        { id: 2, title: 'Обновить зависимости' },
       ],
     },
     {
       id: 2,
       title: 'In progress',
-      tasks: [{ id: 1, title: 'Обновить зависимости' }],
+      tasks: [{ id: 1, title: 'Сверстать главный экран' }],
     },
     {
       id: 3,
@@ -28,10 +28,9 @@ const Columns = () => {
 
   const [columns, setColumns] = useState(initialState);
   const [isAddColumnPopupOpen, setIsAddColumnPopupOpen] = useState(false);
-  const [isColumnTitleInputDisabled, setIsColumnTitleInputDisabled] =
-    useState(true);
   const [isAddColumnButtonDisabled, setIsAddColumnButtonDisabled] =
     useState(false);
+  const [isDragging, setIsDragging] = useState(false);
   const [currentColumn, setCurrentColumn] = useState(null);
   const [currentTask, setCurrentTask] = useState(null);
 
@@ -54,7 +53,6 @@ const Columns = () => {
   const onClickLayout = (e) => {
     if (e.target === e.currentTarget) {
       onCloseAddColumnPopup();
-      setIsColumnTitleInputDisabled(true);
     }
   };
 
@@ -109,6 +107,7 @@ const Columns = () => {
   const onDragStart = (column, task) => {
     setCurrentColumn(column);
     setCurrentTask(task);
+    setIsDragging(true);
   };
 
   const onDragOver = (e) => {
@@ -117,6 +116,7 @@ const Columns = () => {
 
   const onDrop = (e, column) => {
     e.preventDefault();
+    setIsDragging(false);
     const currentIndex = currentColumn.tasks.indexOf(currentTask);
     currentColumn.tasks.splice(currentIndex, 1);
     column.tasks.push(currentTask);
@@ -158,12 +158,12 @@ const Columns = () => {
             key={column.id}
             column={column}
             onDeleteColumn={onDeleteColumn}
-            isColumnTitleInputDisabled={isColumnTitleInputDisabled}
             onDragStart={onDragStart}
             onDragOver={onDragOver}
             onDrop={onDrop}
             addTaskHandler={addTaskHandler}
             deleteTaskHandler={deleteTaskHandler}
+            isDragging={isDragging}
           />
         ))}
       </div>
@@ -175,6 +175,8 @@ const Columns = () => {
         title="Укажите название колонки"
         placeholder="Название колонки"
         buttonText="Добавить колонку"
+        minLength={2}
+        maxLength={15}
       />
     </div>
   );
