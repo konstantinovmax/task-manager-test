@@ -1,0 +1,46 @@
+.root {
+  padding: 10px 40px;
+  height: 60px;
+  background-color: #2b3e4a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  margin: 0;
+  font-family: 'Montserrat', Arial, Sans-serif;
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.19;
+  color: #efefef;
+}
+
+.userContainer {
+  width: 130px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.userImage {
+  width: 35px;
+  height: 35px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.userName {
+  margin: 0;
+  font-family: 'Montserrat', Arial, Sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.19;
+  color: #efefef;
+}
+
+.arrowIcon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Popup.module.scss';
-import classNames from 'classnames';
 import closeIcon from '../../res/icons/close_icon.svg';
+import classNames from 'classnames';
 
 const Popup = ({
   isOpen,
@@ -11,6 +11,8 @@ const Popup = ({
   title,
   placeholder,
   buttonText,
+  minLength,
+  maxLength,
 }) => {
   const [inputValue, setInputValue] = useState('');
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
@@ -42,7 +44,11 @@ const Popup = ({
     >
       <form className={styles.form} onSubmit={onSubmit} noValidate>
         <button type="reset" className={styles.closeButton} onClick={onClose}>
-          <img src={closeIcon} className={closeIcon} />
+          <img
+            src={closeIcon}
+            className={closeIcon}
+            alt="Кнопка закрытия окна"
+          />
         </button>
         <h2 className={styles.title}>{title}</h2>
         <input
@@ -51,8 +57,8 @@ const Popup = ({
           onChange={onInputValueChange}
           className={styles.input}
           placeholder={placeholder}
-          minLength={2}
-          maxLength={100}
+          minLength={minLength}
+          maxLength={maxLength}
           autoFocus={true}
           required
         />

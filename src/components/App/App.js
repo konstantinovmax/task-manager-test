@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import Main from '../Main/Main';
-import Popup from '../Popup/Popup';
-
+import React from 'react';
 import styles from './App.module.scss';
+import Header from '../Header/Header';
+import Main from '../Main/Main';
 
 const App = () => {
   return (
     <div className={styles.root}>
       <div className={styles.content}>
+        <Header />
         <Main />
       </div>
     </div>

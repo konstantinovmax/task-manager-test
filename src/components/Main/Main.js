@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
-import Columns from '../Columns/Columns';
+import React from 'react';
 import styles from './Main.module.scss';
-
-const PROJECT_STRING = 'Проект';
+import Columns from '../Columns/Columns';
 
 const Main = () => {
   return (
     <div className={styles.root}>
-      <p className={styles.title}>{PROJECT_STRING}</p>
+      <h2 className={styles.title}>Проект</h2>
       <Columns />
     </div>
   );
